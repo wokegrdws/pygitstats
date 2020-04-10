@@ -29,8 +29,9 @@ def _get_commits(repo_path):
 # get all commits from the given dir_name
 def get_all_commits(dir_name):
     all_commits = list()
+    list_git_dir = get_git_dir(dir_name)
     try:
-        for file_name in get_git_dir(dir_name):
+        for file_name in list_git_dir:
             all_commits = all_commits + _get_commits(file_name)
     except:
         pass
@@ -153,4 +154,5 @@ def print_figure(list_weekday_dict, start_date):
 
         for key in weekday_dict.keys():
             _print_cell(weekday_dict[key])
-        print('')
+        # move to next line
+        print('\r')  # if use print(''), might have a problem depending on the terminal
