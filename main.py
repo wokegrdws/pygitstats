@@ -6,7 +6,7 @@ def pygitstats():
     username = input("Your commit username: ")
     days_offset = int(input("How many days you want to check: "))
 
-    print('Checking the past', days_offset, 'contributions for', username, 'in', dir_path)
+    print('Checking the past', days_offset, 'days contributions for', username, 'in', dir_path + '\n')
     curr_date = dt.datetime.now().date()
     start_date = curr_date - dt.timedelta(days=days_offset)
     all_commits = get_all_commits(dir_path)
@@ -14,7 +14,7 @@ def pygitstats():
     date_dict = build_date_dict(filtered_commits, start_date, days_offset)
     list_weekday_dict = build_weekday_dict(date_dict)
     print_figure(list_weekday_dict, start_date)
-
+    print('')
 
 if __name__ == '__main__':
     pygitstats()
